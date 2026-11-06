@@ -1,0 +1,8 @@
+{"type":"session","version":3,"id":"01a082ad-aa77-7768-858d-86db760a6c33","timestamp":"2026-09-08T20:20:14.584Z","cwd":"/tmp/eff-test"}
+{"type":"model_change","id":"720c555a","parentId":null,"timestamp":"2026-09-08T20:20:14.980Z","provider":"clinepass","modelId":"cline-pass/kimi-k3"}
+{"type":"thinking_level_change","id":"c28ec471","parentId":"720c555a","timestamp":"2026-09-08T20:20:14.980Z","thinkingLevel":"high"}
+{"type":"model_change","id":"3bc85bdb","parentId":"c28ec471","timestamp":"2026-09-08T20:20:14.985Z","provider":"clinepass","modelId":"cline-pass/glm-5.2"}
+{"type":"thinking_level_change","id":"87e6dbdb","parentId":"3bc85bdb","timestamp":"2026-09-08T20:20:14.986Z","thinkingLevel":"medium"}
+{"type":"custom","customType":"preset-state","data":{"name":"execute"},"id":"96e501c7","parentId":"87e6dbdb","timestamp":"2026-09-08T20:20:14.987Z"}
+{"type":"message","id":"4049a8f4","parentId":"96e501c7","timestamp":"2026-09-08T20:20:14.987Z","message":{"role":"user","content":[{"type":"text","text":"Reply with exactly: ok"}],"timestamp":1788898814986}}
+{"type":"message","id":"07dcd406","parentId":"4049a8f4","timestamp":"2026-09-08T20:20:18.129Z","message":{"role":"assistant","content":[{"type":"text","text":"ok"}],"api":"openai-completions","provider":"clinepass","model":"cline-pass/glm-5.2","usage":{"input":2005,"output":3,"cacheRead":0,"cacheWrite":0,"reasoning":0,"totalTokens":2008,"cost":{"input":0.002807,"output":0.0000132,"cacheRead":0,"cacheWrite":0,"total":0.0028202}},"stopReason":"stop","timestamp":1788898814997,"responseId":"gen_01M21AVBAW8YF5P0JRC3RMZADZ","responseModel":"zai/glm-5.2","rawStopReason":"stop"}}

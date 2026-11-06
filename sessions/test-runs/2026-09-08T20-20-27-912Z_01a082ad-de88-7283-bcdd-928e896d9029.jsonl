@@ -1,0 +1,7 @@
+{"type":"session","version":3,"id":"01a082ad-de88-7283-bcdd-928e896d9029","timestamp":"2026-09-08T20:20:27.912Z","cwd":"/tmp/eff-test"}
+{"type":"model_change","id":"c9a6feac","parentId":null,"timestamp":"2026-09-08T20:20:28.289Z","provider":"clinepass","modelId":"cline-pass/kimi-k3"}
+{"type":"thinking_level_change","id":"453421cc","parentId":"c9a6feac","timestamp":"2026-09-08T20:20:28.290Z","thinkingLevel":"high"}
+{"type":"model_change","id":"2059b8b8","parentId":"453421cc","timestamp":"2026-09-08T20:20:28.295Z","provider":"clinepass","modelId":"cline-pass/glm-5.3"}
+{"type":"custom","customType":"preset-state","data":{"name":"plan"},"id":"d7878637","parentId":"2059b8b8","timestamp":"2026-09-08T20:20:28.296Z"}
+{"type":"message","id":"ef500ce2","parentId":"d7878637","timestamp":"2026-09-08T20:20:28.297Z","message":{"role":"user","content":[{"type":"text","text":"Reply with exactly: ok"}],"timestamp":1788898828296}}
+{"type":"message","id":"0bace770","parentId":"ef500ce2","timestamp":"2026-09-08T20:20:29.349Z","message":{"role":"assistant","content":[{"type":"text","text":"ok"}],"api":"openai-completions","provider":"clinepass","model":"cline-pass/glm-5.3","usage":{"input":1925,"output":3,"cacheRead":0,"cacheWrite":0,"reasoning":0,"totalTokens":1928,"cost":{"input":0.002695,"output":0.0000132,"cacheRead":0,"cacheWrite":0,"total":0.0027082}},"stopReason":"stop","timestamp":1788898828306,"responseId":"gen_01M21AVRBDF0VD0EHFT44V3078","responseModel":"zai/glm-5.3","rawStopReason":"stop"}}
