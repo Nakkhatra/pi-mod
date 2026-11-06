@@ -15,7 +15,7 @@ starts from this directory.
 ### Reference directories (live locations pi actually uses)
 - Extensions: `~/.pi/agent/extensions/` — TypeScript files loaded at startup
   (current: `auto-session-name.ts`, `handoff-effort-drop.ts`, `preset.ts`,
-  `session-catch-up.ts`, `steer-now.ts`, `tokenhub.ts`)
+  `session-catch-up.ts`, `tokenhub.ts`)
 - Skills: `~/.pi/agent/skills/<name>/SKILL.md` (current: `handoff-create`,
   `handoff-resume`, `project-md`)
 - Themes: `~/.pi/agent/themes/*.json` (current: `tokyo-night`, `neon-green`,
@@ -49,14 +49,15 @@ one extension providing (A) an automatic stale-session notice on resume and
 Handoff-per-session discipline stays as fallback (Option C), not a
 requirement. Plan: PLAN-session-catch-up.md.
 
-### 2026-11-06 — Mid-run course correction via steer-now extension (two variants)
-The model is only consulted at LLM-call boundaries, so without aborting, the
-earliest a queued message can reach the agent is the end of the current tool
-batch (native steering already does this). Extension `steer-now.ts` adds
-`/steer <msg>` (safe: queue natively, nothing interrupted) and `/steer! <msg>`
-(interrupt: abort now, auto-resend the message on settle — fuses Esc +
-re-submit; partial context is preserved). Validated via RPC-mode scripted
-tests for both paths.
+### 2026-11-06 — Mid-run course correction solved by backgrounding, not slash commands (reverses steer-now extension)
+Initial approach: `steer-now.ts` extension with `/steer` (native queue) and
+`/steer!` (abort + auto-resend). Live testing showed the root problem is
+foreground tool calls themselves — they block the turn, so even native steer
+only lands after the whole batch, and no injection point can beat that.
+Reversed: extension removed; the rule "never run >10s commands in the
+foreground — nohup background + report PID/log, poll later" now lives in
+`~/.pi/agent/AGENTS.md` (global). Turn ends fast, queued messages are
+consumed at the next LLM call, in-flight work keeps running.
 
 ### 2026-11-06 — Sessions stored in pi's session dir, symlinked here
 Archived transcripts live in
