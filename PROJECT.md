@@ -15,7 +15,7 @@ starts from this directory.
 ### Reference directories (live locations pi actually uses)
 - Extensions: `~/.pi/agent/extensions/` — TypeScript files loaded at startup
   (current: `auto-session-name.ts`, `handoff-effort-drop.ts`, `preset.ts`,
-  `tokenhub.ts`)
+  `session-catch-up.ts`, `tokenhub.ts`)
 - Skills: `~/.pi/agent/skills/<name>/SKILL.md` (current: `handoff-create`,
   `handoff-resume`, `project-md`)
 - Themes: `~/.pi/agent/themes/*.json` (current: `tokyo-night`, `neon-green`,

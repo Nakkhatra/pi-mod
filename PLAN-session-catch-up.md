@@ -1,6 +1,6 @@
 # Plan: `session-catch-up` Extension
 
-Status: planned, not implemented
+Status: **implemented, tested, installed** (`~/.pi/agent/extensions/session-catch-up.ts`, 2026-11-06)
 Decision: build **Option A + B as one extension**; keep **Option C (handoff discipline)** as fallback. (ADR 2026-11-06 in PROJECT.md)
 
 ## Problem
@@ -79,6 +79,19 @@ One extension, two surfaces:
 - Negative: resume a session with no newer activity → silence.
 - Negative: non-git cwd → notice covers sessions/handoffs only, no errors.
 - Edge: fork/reload/new reasons → no notice at all.
+
+## Implementation notes (deviations from original design)
+- CLI resume paths (`pi -c`, `-r`, `--session <file>`) fire `session_start` with
+  `reason: "startup"`, not "resume" (only in-session `/resume` yields
+  "resume"). The gate therefore treats `reason === "resume"` as a resume, and
+  `reason === "startup"` as a resume when the session's oldest entry timestamp
+  is older than 60s (fresh sessions have a "now" header; `getEntries()`
+  excludes the `session` header entry itself — first entry is `model_change`).
+  `reload`/`new`/`fork` stay excluded.
+- Verified via RPC mode (`pi --mode rpc` surfaces `ctx.ui.notify` as an
+  `extension_ui_request` on stdout); `/catch-up` verified by invoking the real
+  factory's registered handler with a stubbed `pi` (print mode does not
+  dispatch slash commands).
 
 ## Explicit non-goals
 
