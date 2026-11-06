@@ -28,6 +28,7 @@ starts from this directory.
 ## Structure
 - `PROJECT.md` — this file
 - `AGENTS.md` — session start rules for work in this repo
+- `PLAN-session-catch-up.md` — build plan for the session-catch-up extension
 - `sessions/` — archived pi session transcripts that created/modified pi
   utilities (see `sessions/INDEX.md` for what each produced)
 - `sessions/test-runs/` — throwaway sessions used to validate skills/extensions
@@ -41,6 +42,13 @@ starts from this directory.
   exactly: ok"` in a `/tmp` dir) before touching live files.
 
 ## ADR Log
+### 2026-11-06 — Session staleness solved via catch-up extension (A+B), handoffs as fallback
+Decided that resuming old feature sessions needs built-in drift awareness:
+one extension providing (A) an automatic stale-session notice on resume and
+(B) an opt-in `/catch-up` command injecting a drift brief into context.
+Handoff-per-session discipline stays as fallback (Option C), not a
+requirement. Plan: PLAN-session-catch-up.md.
+
 ### 2026-11-06 — Sessions stored in pi's session dir, symlinked here
 Archived transcripts live in
 `~/.pi/agent/sessions/--home-beast-work-personal_repos-pi-mod--/` (pi's cwd-key
