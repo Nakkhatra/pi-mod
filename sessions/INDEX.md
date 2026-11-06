@@ -3,6 +3,11 @@
 Archived pi coding agent sessions that created/modified pi extensions, skills,
 themes, or config. Each file is a raw `.jsonl` transcript.
 
+The six main transcripts physically live in
+`~/.pi/agent/sessions/--home-beast-work-personal_repos-pi-mod--/` so they show
+up under `/resume` when pi is launched from this directory; the `.jsonl`
+entries here are symlinks to them. `test-runs/` holds plain copies.
+
 ## Main sessions
 
 | Session file | What it produced |

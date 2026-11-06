@@ -41,7 +41,8 @@ starts from this directory.
   exactly: ok"` in a `/tmp` dir) before touching live files.
 
 ## ADR Log
-### 2026-11-06 — Consolidate pi-mod work under one repo
-Archived all pi-extension/skill/theme sessions from `~/.pi/agent/sessions/`
-into `sessions/` here so future pi customization work has a single home with
-its history attached.
+### 2026-11-06 — Sessions stored in pi's session dir, symlinked here
+Archived transcripts live in
+`~/.pi/agent/sessions/--home-beast-work-personal_repos-pi-mod--/` (pi's cwd-key
+dir) so `/resume` works when launching pi from this repo; `sessions/` holds
+symlinks to them plus plain copies of the throwaway test runs.
