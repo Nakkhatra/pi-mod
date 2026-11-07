@@ -46,6 +46,13 @@ starts from this directory.
 - `sessions/test-runs/` — throwaway sessions used to validate skills/extensions
 
 ## Conventions
+- **STRICT — every feature lives in this repo**: any new/modified/deleted file
+  under `~/.pi/agent/` (extension, skill, theme, agent, prompt, config, docs)
+  MUST be mirrored in `package/` at the matching path and committed here in the
+  same session. `package/` is the source of truth; `~/.pi/agent/` is just the
+  installed copy. Sync with `./install.sh` or verify with `diff -r`. No feature
+  is "done" until it's in `package/` and committed — this is what keeps
+  `git clone && ./install.sh` plug-and-play on new devices.
 - New skills follow the SKILL.md frontmatter format; new extensions follow the
   `ExtensionAPI` TypeScript pattern in pi's `examples/extensions/`.
 - Subagent workflow prompts use the chain format with `{previous}`
