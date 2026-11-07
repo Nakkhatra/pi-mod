@@ -31,9 +31,12 @@ starts from this directory.
 
 ## Structure
 - `PROJECT.md` — this file
-- `package/` — **portable package of all customizations** (see `package/README.md`);
+- `package/` — **portable package of ALL customizations** (see `package/README.md`);
   `install.sh` at repo root applies it to `~/.pi/agent/` (`--link` for symlinks,
   `--dry-run` to preview). Existing files are backed up to `~/.pi/agent/.backup-<ts>/`.
+  Includes auth.json with PLACEHOLDER keys (installer never overwrites real keys),
+  dual_review.yaml, docs/, npm manifests. Excludes models-store.json (generated),
+  npm/node_modules (installed), bin/rg (binary).
 - `AGENTS.md` — session start rules for work in this repo
 - `PLAN-session-catch-up.md` — build plan for the session-catch-up extension
 - `web-research/` — source of the `researcher` subagent and
@@ -53,6 +56,13 @@ starts from this directory.
   exactly: ok"` in a `/tmp` dir) before touching live files.
 
 ## ADR Log
+### 2026-11-08 — Package covers all of ~/.pi/agent except device-local/generated
+Second pass added auth.json (placeholders only — installer replaces placeholder
+auth.json but keeps files with real keys), dual_review.yaml, docs/, and
+npm package manifests. models-store.json (pi-generated catalog cache),
+npm/node_modules, and bin/rg are deliberately not packaged. Verified
+package/ is byte-identical to live ~/.pi/agent via diff -r before commit.
+
 ### 2026-11-08 — Repo restructured as portable install package
 All live `~/.pi/agent/` artifacts are mirrored in `package/` (extensions,
 agents, prompts, skills, themes, settings/models/presets.json, global
