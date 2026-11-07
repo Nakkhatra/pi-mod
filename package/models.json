@@ -1,0 +1,12 @@
+{
+  "providers": {
+    "clinepass": {
+      "modelOverrides": {
+        "cline-pass/kimi-k3": { "input": ["text", "image"] },
+        "cline-pass/kimi-k2.6": { "input": ["text", "image"] },
+        "cline-pass/kimi-k2.7-code": { "input": ["text", "image"] },
+        "cline-pass/glm-5.3": { "input": ["text", "image"] }
+      }
+    }
+  }
+}

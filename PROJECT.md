@@ -31,6 +31,9 @@ starts from this directory.
 
 ## Structure
 - `PROJECT.md` — this file
+- `package/` — **portable package of all customizations** (see `package/README.md`);
+  `install.sh` at repo root applies it to `~/.pi/agent/` (`--link` for symlinks,
+  `--dry-run` to preview). Existing files are backed up to `~/.pi/agent/.backup-<ts>/`.
 - `AGENTS.md` — session start rules for work in this repo
 - `PLAN-session-catch-up.md` — build plan for the session-catch-up extension
 - `web-research/` — source of the `researcher` subagent and
@@ -50,6 +53,15 @@ starts from this directory.
   exactly: ok"` in a `/tmp` dir) before touching live files.
 
 ## ADR Log
+### 2026-11-08 — Repo restructured as portable install package
+All live `~/.pi/agent/` artifacts are mirrored in `package/` (extensions,
+agents, prompts, skills, themes, settings/models/presets.json, global
+AGENTS.md) with `install.sh` applying them on a new device (copy or symlink
+mode, auto-backup of existing files). `package/` is the source of truth going
+forward: edit there, run `./install.sh` to sync live. Note: `install.sh --dry-run`
+initially MOVED live files into backup (bug) — fixed by checking DRY before
+backup/move; never move files in dry mode.
+
 ### 2026-11-06 — Web research before planning via subagent extension + researcher agent
 Planning on current best practice needs live web info; the agent has no
 built-in web tooling. Adopted pi's bundled subagent extension (symlinked into
