@@ -70,5 +70,26 @@ apply "$SRC/models.json" "models.json"
 apply "$SRC/presets.json" "presets.json"
 apply "$SRC/AGENTS-global.md" "AGENTS.md"
 
+# auth.json — contains PLACEHOLDER keys in this repo; never overwrite a real one.
+if [ -e "$DEST/auth.json" ] || [ -L "$DEST/auth.json" ]; then
+  if grep -q REPLACE_WITH_YOUR "$DEST/auth.json"; then
+    apply "$SRC/auth.json" "auth.json"   # still a placeholder -> safe to replace
+  else
+    echo "  [keep] auth.json (real keys present; edit manually if providers changed)"
+  fi
+else
+  apply "$SRC/auth.json" "auth.json"
+  echo "  NOTE: fill in your API keys in $DEST/auth.json"
+fi
+
+# dual_review.yaml + docs + npm dependency manifests
+apply "$SRC/dual_review.yaml" "dual_review.yaml"
+for f in "$SRC"/docs/*.md; do apply "$f" "docs/$(basename "$f")"; done
+for f in "$SRC"/npm/package*.json; do apply "$f" "npm/$(basename "$f")"; done
+if [ $DRY -eq 0 ]; then
+  echo "  Installing npm packages (pi settings.json packages)..."
+  (cd "$DEST/npm" && npm install --silent) || echo "  [warn] npm install failed; run 'cd ~/.pi/agent/npm && npm install' later"
+fi
+
 echo "Done. Restart pi to load extensions/themes."
 [ $made_backup -eq 1 ] && echo "Previous files backed up in $backup_dir"

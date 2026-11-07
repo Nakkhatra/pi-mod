@@ -1,0 +1,9 @@
+{
+  "name": "pi-extensions",
+  "private": true,
+  "dependencies": {
+    "catppuccin-pi-theme": "^0.1.6",
+    "pi-ask-side": "^1.0.0",
+    "pi-clinepass-provider": "^1.7.0"
+  }
+}
