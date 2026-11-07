@@ -1,0 +1,25 @@
+{
+  "lastChangelogVersion": "1.5.0",
+  "theme": "tokyo-night",
+  "packages": [
+    "npm:pi-clinepass-provider",
+    {
+      "source": "npm:catppuccin-pi-theme",
+      "themes": [
+        "+themes/catppuccin-frappe.json",
+        "+themes/catppuccin-latte.json",
+        "+themes/catppuccin-macchiato.json"
+      ]
+    },
+    "npm:pi-ask-side"
+  ],
+  "defaultProvider": "tokenhub",
+  "defaultModel": "glm-5.3-flash",
+  "defaultThinkingLevel": "high",
+  "themes": [
+    "+themes/neon-green.json"
+  ],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-clinepass-provider\",\"scope\":\"user\"}": "1.7.0"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "plan": {
+    "provider": "clinepass",
+    "model": "cline-pass/glm-5.3",
+    "thinkingLevel": "high",
+    "tools": ["read", "grep", "find", "ls"],
+    "instructions": "You are in PLANNING MODE. Understand the problem deeply and produce a concrete implementation plan — do not modify files (write tools are disabled in this preset). Read files in full rather than skimming, grep for related code and existing patterns, and identify risks, edge cases, and dependencies before proposing anything. Ask clarifying questions when requirements are ambiguous. Output: numbered steps (what changes, why, risks), files to be modified, tests to add or update."
+  },
+  "execute": {
+    "provider": "clinepass",
+    "model": "cline-pass/glm-5.3-flash",
+    "thinkingLevel": "high",
+    "instructions": "You are in EXECUTION MODE. Implement the plan with focused, surgical changes — prefer edit over write for existing files, keep scope tight, and run the project's tests or type checks after changes. If you hit unexpected complexity, stop and explain rather than hacking around it."
+  },
+  "review": {
+    "provider": "clinepass",
+    "model": "cline-pass/glm-5.3",
+    "thinkingLevel": "high",
+    "instructions": "You are in REVIEW MODE. Adversarially scrutinize the changes at hand before they are committed. Look for unhandled edge cases, incorrect assumptions, missed error paths, and regressions against the surrounding code. Do not rewrite anything — flag findings concisely, ranked by severity, with file:line references."
+  }
+}
